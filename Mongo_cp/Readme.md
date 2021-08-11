@@ -9,6 +9,8 @@
 * Last name: Ben Yahia, First name: Rym, age:4
 * Last name: Cherif, First name: Sami, age:3
 
+### Steps
+
 * Display all of the contacts list.
 * Display all the information about only one person using his ID.
 * Display all the contacts with an age >18.
