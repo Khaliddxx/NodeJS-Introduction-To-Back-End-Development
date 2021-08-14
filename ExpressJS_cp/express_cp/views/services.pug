@@ -1,25 +1,23 @@
 
-html
-
-
+extends layout
 block content
     
 
 
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  a.navbar-brand(href='/') Expressive
-  button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-    span.navbar-toggler-icon
-  
-  .collapse.navbar-collapse(id='navbarSupportedContent')
-    ul.navbar-nav.mr-auto
-      li.nav-item.active
-        a.nav-link(href='/') Home Page
-      li.nav-item
-        a.nav-link(href='/services') Our Services
-      li.nav-item
-        a.nav-link(href='/contact') Contact Us
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    a.navbar-brand(href='/') Expressive
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    
+    .collapse.navbar-collapse(id='navbarSupportedContent')
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link(href='/') Home Page
+        li.nav-item
+          a.nav-link(href='/services') Our Services
+        li.nav-item
+          a.nav-link(href='/contact') Contact Us
       
           
-    h1 Our Services
-    p We provide server development services and maintenance.
+  h1 Our Services
+  p We provide server development services and maintenance.
