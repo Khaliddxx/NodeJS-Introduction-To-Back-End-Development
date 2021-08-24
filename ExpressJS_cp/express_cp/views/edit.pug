@@ -1,0 +1,22 @@
+extends layout 
+
+block content
+
+    form.row.g-3(action="/products/edit" method="POST")
+        div.col-md-6
+            label.form-label(for="name") Product Name
+            input.form-control(id="name" name="name" type="text" value=product.name)
+        div.col-md-6
+            label.form-label(for="price") Product Price
+            input.form-control(id="price" name="price" type="number" value=product.price)
+        div.col-md-6
+            label.form-label(for="store") Product Store
+            input.form-control(id="store" name="store" type="text" value=product.store)
+        div.col-md-6
+            label.form-label(for="category") Product Category
+            input.form-control(id="category" name="category" type="text" value=product.category)
+        div.col-md-12
+            label.form-label(for="description") Product Description
+            input.form-control(id="description" name="description" type="text" value=product.description)
+            input.form-control.d-none(id="id" name="id" type="text" value=product._id)
+        button.btn.btn-primary.mx-auto.my-4(type="submit") Submit
