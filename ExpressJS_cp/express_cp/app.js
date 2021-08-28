@@ -15,28 +15,28 @@ const productRouter = require("./routes/products");
 console.log(process.env.CONNECTION_STRING);
 
 mongoose.connect(
-    process.env.CONNECTION_STRING,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    },
-    () => console.log("Database is connected")
+  process.env.CONNECTION_URL,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => console.log("Database is connected")
 );
 
 const app = express();
 
 // custom middleware
-const isValid = (req, res, ahmed) => {
-    const date = new Date();
-    const day = date.getDay(); // 0 -> 6 , 0 is Sunday
-    const hours = date.getHours(); // 0 --> 23
+const isValid = (req, res, next) => {
+  const date = new Date();
+  const day = date.getDay(); // 0 -> 6 , 0 is Sunday
+  const hours = date.getHours(); // 0 --> 23
 
-    req.ahmed = "ahmed message";
-    if (day >= 0 && day <= 4 && hours >= 9 && hours <= 17) {
-        ahmed();
-    } else {
-        res.send("Server is out of service");
-    }
+  req.next = "Message";
+  if (day >= 0 && day <= 4 && hours >= 9 && hours <= 17) {
+    next();
+  } else {
+    res.send("Server is out of service");
+  }
 };
 
 // view engine setup
@@ -59,18 +59,18 @@ app.use("/products", productRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    next(createError(404));
+  next(createError(404));
 });
 
 // error handler
 app.use(function (err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get("env") === "development" ? err : {};
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.render("error");
+  // render the error page
+  res.status(err.status || 500);
+  res.render("error");
 });
 
 module.exports = app;

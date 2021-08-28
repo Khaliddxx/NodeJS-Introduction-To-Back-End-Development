@@ -1,9 +1,9 @@
-// import express from "express";
+import express from "express";
 
-// const router = express.router;
+var router = express.Router;
 
-// router.get("/", (req, res) => {
-//   console.log("yay server works");
-// });
+router.get("/", function (req, res) {
+  res.render("yuss person");
+});
 
-// export default router;
+export default router;

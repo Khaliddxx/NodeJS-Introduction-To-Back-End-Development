@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
-// import personRouter from "./Routes/person.js";
+import personRouter from "./Routes/person.js";
 
 const app = express();
 
@@ -22,7 +22,7 @@ mongoose
   )
   .catch((error) => console.error());
 
-// mongoose.set("useFindAndModify", false);
+mongoose.set("useFindAndModify", false);
 
 app.use("/", (req, res) => {
   res.send("YES");
