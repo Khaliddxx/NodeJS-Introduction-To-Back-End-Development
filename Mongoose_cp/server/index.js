@@ -23,8 +23,11 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  () => console.log("Mongo Connected")
+  () => console.log('Connected to Database')
+    
 );
+
+mongoose.set('useFindAndModify', false);
 
 app.use("/", (req, res) => {
   res.send("YES");
@@ -68,6 +71,7 @@ PersonModel.create([
 // Fourth Requirement: Use model.find() to Search Your Database
 (async () => {
   const data = await PersonModel.find();
+  console.log("\n\n Fourth Requirement: Use model.find() \n");
   console.log(data);
 })();
 
