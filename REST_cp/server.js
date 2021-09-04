@@ -17,6 +17,7 @@ mongoose.connect(
 );
 
 app.use(bodyParser.json());
+
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -42,25 +43,32 @@ app.post("/add-user", async (req, res, next) => {
   res.send(user);
 });
 
-app.put("/update-user/{id}", async (req, res, next) => {
-  const id = req.params.id;
-  const doc = await userModel.findOneAndUpdate(id, req.body, { new: true });
-  res.send(userModel.find(id));
-  res.send(doc);
+app.put("/update-user/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    console.log(id);
+    const doc = await userModel.findOneAndUpdate({ id }, req.body, {
+      new: true,
+    });
+    // res.send(userModel.find(id));
+    res.send(doc);
+  } catch (err) {
+    console.error(err);
+  }
 });
 
-app.delete("/delete-user/{id}", async (req, res, next) => {
+app.delete("/delete-user/:id", async (req, res, next) => {
   //   const doc = await userModel.find(req.params.id);
-  const deleteUser = await userModel.findByIdAndRemove(
-    // doc._id,
-    req.params.id,
-    (err, output) => {
-      if (err) {
-        return next(err);
-      }
-      res.send(output === 1 ? { msg: "success" } : { msg: "error" });
-    }
-  );
+  const id = req.params.id;
+  try {
+    const deleteUser = await userModel.findOneAndDelete(
+      // doc._id,
+      { id }
+    );
+    res.send("User Deleted");
+  } catch (err) {
+    res.status(505).send(err.message);
+  }
 });
 
 app.listen(3000, () => console.log("server running successfully"));
